@@ -58,10 +58,23 @@
         <h1>
             QR code generator
         </h1>
-        <form method="post">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="text" name="data" id="data" placeholder="write something or enter url">
-            <button>Generate</button>
+            {{ form }}
+            <!-- <label for="your_name">Your Name: </label>
+            <input type="text" name="data" id="data" placeholder="Your name(firstname and lastname)">
+            <label for="your_email">Your Email: </label>
+            <input type="email" name="email" id="email" placeholder="Email address"> -->
+            <!-- <input type="date" name="data" id="data" placeholder="Date of birth(DD-MM-YYYY)"> -->
+            <!-- <input type="text" name="data" id="data" placeholder="Gender">
+            <input type="text" name="data" id="data" placeholder="Place of birth">
+            <input type="text" name="data" id="data" placeholder="State of Origin and Local Government Origin">
+            <input type="text" name="data" id="data" placeholder="Occupation">
+            <input type="text" name="data" id="data" placeholder="Marital Status (Single or Married or Divorced)">
+            <input type="text" name="data" id="data" placeholder="Father's Name">
+            <input type="text" name="data" id="data" placeholder="Mothers's Name">
+            <input type="text" name="data" id="data" placeholder="Contact Information"> -->
+            <button type="submit" value="Submit">Generate</button>
         </form>
 
         <div class="qr-img">
