@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Bio-data of {{user.first_name}} {{user.lastname}}</h1>
+    <div class="container">
+        <div class="passport-container">
+            <img src="{{MEDIA_URL}}{{user.passport}}" alt="missing image">
+        </div>
+
+        <p>First Name: {{user.first_name}}</p>
+        <p>Last Name: {{user.last_name}}</p>
+        <p>Email: {{user.email}}</p>
+        <p>Address: {{user.contact_address}}</p>
+    </div>
+    <button type="submit">Generate QR code</button>
+</body>
+
+</html>
+
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 20px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    label {
+        display: block;
+        margin-top: 10px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 5px;
+        margin-top: 5px;
+    }
+
+    .passport-container {
+        position: absolute;
+        top: auto;
+        left: 75%;
+
+    }
+
+    .passport-container img {
+        width: 100px;
+        height: 100px;
+        display: flex;
+    }
+
+    .container {
+        display: flexbox;
+    }
+</style>
