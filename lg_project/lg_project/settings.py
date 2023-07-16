@@ -16,7 +16,18 @@ SECRET_KEY = str(os.getenv("SECRET_KEY", ""))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.getenv("DEBUG", True))
 
-ALLOWED_HOSTS = ["localhost","127.0.0.1"]
+PROTOCOL = "http"
+DOMAIN = "localhost:8080"
+
+if not DEBUG:
+    PROTOCOL = "https"
+    DOMAIN = "gathpay-authsystem.onrender.com"
+    ALLOWED_HOSTS = ["gathpay-authsystem.onrender.com"]
+
+CSRF_TRUSTED_ORIGINS = ["https://gathpay-authsystem.onrender.com"]
+
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0", "gathpay-authsystem.onrender.com"]
+
 
 DOMAIN_SITE = str(os.getenv("DOMAIN"))
 # Application definition
