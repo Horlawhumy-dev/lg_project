@@ -21,15 +21,15 @@ DOMAIN = "localhost:8080"
 
 if not DEBUG:
     PROTOCOL = "https"
-    DOMAIN = "gathpay-authsystem.onrender.com"
-    ALLOWED_HOSTS = ["gathpay-authsystem.onrender.com"]
+    DOMAIN = "biodata-project.onrender.com"
+    ALLOWED_HOSTS = ["biodata-project.onrender.com"]
 
-CSRF_TRUSTED_ORIGINS = ["https://gathpay-authsystem.onrender.com"]
+CSRF_TRUSTED_ORIGINS = ["https://biodata-project.onrender.com"]
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0", "gathpay-authsystem.onrender.com"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0", "biodata-project.onrender.com"]
 
 
-DOMAIN_SITE = str(os.getenv("DOMAIN"))
+DOMAIN_SITE = str(os.getenv("DOMAIN_SITE"))
 # Application definition
 
 INSTALLED_APPS = [
