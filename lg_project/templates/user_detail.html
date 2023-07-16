@@ -6,11 +6,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Personal Bio Data page</title>
 </head>
 
 <body>
-    <h1>Bio-data of {{user.first_name}} {{user.lastname}}</h1>
+    <h1>Bio-data of {{user.first_name}} {{user.last_name}}</h1>
     <div class="container">
         <div class="passport-container">
             <img src="{{user.passport.url}}" alt="missing image">
@@ -18,10 +18,16 @@
 
         <p>First Name: {{user.first_name}}</p>
         <p>Last Name: {{user.last_name}}</p>
-        <p>Email: {{user.email}}</p>
-        <p>Address: {{user.contact_address}}</p>
+        <p>Email Address: {{user.email}}</p>
+        <p>Contact Address: {{user.contact_address}}</p>
     </div>
-    <button type="submit">Generate QR code</button>
+    <div class="qr-img">
+        {% if img_name %}
+            <img src="/media/{{ img_name }}" alt="qr code">
+        {% else %}
+            <a href="/account/detail/{{user.id}}" class="generate-qr">Generate QR</a>
+        {% endif %}
+    </div>
 </body>
 
 </html>
@@ -29,7 +35,7 @@
 <style>
     body {
         font-family: Arial, Helvetica, sans-serif;
-        margin: 20px;
+        margin: 10px;
     }
 
     h1 {
@@ -68,5 +74,24 @@
 
     .container {
         display: flexbox;
+    }
+
+    .qr-img{
+        width: 100%;
+        max-width: 300px;
+        margin: 10rem auto;
+    }
+
+    .qr-img img{
+        width: 80%;
+    }
+
+    .generate-qr {
+        background-color: black;
+        border-radius: 10%;
+        padding: 1em 2em;
+        color: white;
+        text-decoration: none;
+        margin: auto;
     }
 </style>

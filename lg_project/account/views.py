@@ -1,8 +1,10 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
-from qrcodeapp.forms import UserForm
+from django.conf import settings
+from .forms import UserForm
 from account.models import UserAccount
-from django.urls import reverse
+from qrcode import *
+import time
 
 # Create your views here.
 def index(request):
@@ -13,8 +15,6 @@ def user_form_view(request):
         form = UserForm(request.POST, request.FILES)
         if form.is_valid():
             user = form.save()
-            # return redirect("user-detail", kwargs={"user_id": user.id})
-            print(user.id)
             return render(request, 'user_detail.html',{'user':user})
 
 
@@ -24,6 +24,19 @@ def user_form_view(request):
         
 
 def user_detail_view(request, user_id):
-    user = get_object_or_404(UserAccount, id=user_id)
-    return render(request, 'user_detail.html',{'user':user})
+    try:
+        user = get_object_or_404(UserAccount, id=user_id)
+    except user.DoesNotExist as e:
+        print(e)
 
+    img_name = get_qrcode_image(request)
+
+    return render(request, 'user_detail.html',{'user':user, 'img_name': img_name})
+
+def get_qrcode_image(request):
+    domain = settings.DOMAIN_SITE
+    qr = make(domain+request.path)
+    img_name = 'qr' + str(time.time()) + '.png'
+    qr.save(settings.MEDIA_ROOT + '/' + img_name)
+    print(img_name)
+    return img_name
