@@ -1,7 +1,7 @@
 from django.db import models
 
 gender_choices = ((0, "Male"),(1,"Female"))
-marital_status = ((0,"Single"),(1,"Married"), (2,"Divored"))
+marital_status = ((0,"Single"),(1,"Married"), (2,"Divorced"))
 # Create your models here.
 
 

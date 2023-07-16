@@ -13,7 +13,7 @@
     <h1>Bio-data of {{user.first_name}} {{user.lastname}}</h1>
     <div class="container">
         <div class="passport-container">
-            <img src="{{MEDIA_URL}}{{user.passport}}" alt="missing image">
+            <img src="{{user.passport.url}}" alt="missing image">
         </div>
 
         <p>First Name: {{user.first_name}}</p>

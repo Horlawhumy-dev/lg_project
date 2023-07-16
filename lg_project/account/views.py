@@ -13,6 +13,7 @@ def user_form_view(request):
         form = UserForm(request.POST, request.FILES)
         if form.is_valid():
             user = form.save()
+            # return redirect("user-detail", kwargs={"user_id": user.id})
             print(user.id)
             return render(request, 'user_detail.html',{'user':user})
 
