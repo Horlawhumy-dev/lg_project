@@ -1,2 +1,2 @@
 # lg-project
-Local Government Siwes II Project for an undergraduate
+Local Government Final Year Project For Undergraduate
